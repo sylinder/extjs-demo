@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link href="https://cdn.bootcss.com/extjs/6.0.0/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet">
+      <script src="https://cdn.bootcss.com/extjs/6.0.0/ext-all.js"></script>
+      <script type="text/javascript">
+
+         Ext.define('Classroom', {
+            extend: 'Ext.data.Model',
+            fields: [
+               {name: 'id', mapping: 'id'},
+               {name: 'name', mapping: 'name'},
+               {name: 'count', mapping: 'count'}
+            ]
+         });
+
+         Ext.onReady(function() {
+            var myData = [
+               {id: '1', name: 'Bering', count: '17'},
+               {id: '2', name: 'Gibraltar', count: '18'},
+               {id: '3', name: 'Panama', count: '17'},
+               {id: '4', name: 'Suez', count: '18'}
+            ];
+
+            var gridStore = Ext.create('Ext.data.Store', {
+               model: 'Classroom',
+               data: myData
+            });
+
+            Ext.create('Ext.grid.Panel', {
+               store: gridStore,
+               title: 'Classroom Grid',
+               renderTo: 'gridDiv',
+               width: 300,
+               columns: [
+                  {header: 'Classroom NO', dataIndex: 'id'},
+                  {header: 'Name', dataIndex: 'name'},
+                  {header: 'Count', dataIndex: 'count'}
+               ]
+            });
+         });
+
+      </script>
+   </head>
+   <body>
+      <div id="gridDiv" />
+   </body>
+</html>

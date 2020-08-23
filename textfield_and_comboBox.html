@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link href="https://cdn.bootcss.com/extjs/6.0.0/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet">
+      <script src="https://cdn.bootcss.com/extjs/6.0.0/ext-all.js"></script>
+      <script type="text/javascript">
+         
+         Ext.onReady(function() {
+            Ext.create('Ext.form.Panel', {
+               renderTo: 'formDiv',
+               width: 400,
+               items: [
+                  {xtype: 'textfield', fieldLabel: 'username'},
+                  {xtype: 'textfield', fieldLabel: 'email'},
+                  {xtype: 'textfield', fieldLabel: 'password'},
+                  {xtype: 'combobox', fieldLabel: 'Classroom', store: Ext.create('Ext.data.Store', {
+                     fields: ['abbr', 'name'],
+                     data: [
+                        {'abbr': 'room1', 'name': 'Bering'},
+                        {'abbr': 'room2', 'name': 'Gibraltar'},
+                        {'abbr': 'room3', 'name': 'Panama'},
+                        {'abbr': 'room4', 'name': 'Suez'}
+                     ]
+                  }),
+                  valueField: 'abbr',
+                  displayField: 'name'
+               },
+
+                  {xtype: 'button', text: 'submit'}
+               ]
+            });
+         });
+
+      </script>
+   </head>
+   <body>
+	  <div id="formDiv" />
+   </body>
+</html>
